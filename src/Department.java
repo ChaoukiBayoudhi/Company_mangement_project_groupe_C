@@ -1,7 +1,8 @@
 import lombok.*;
 
 import java.util.ArrayList;
-@ToString
+//@ToString //redefine the toString() method by returning the value of all fields
+@ToString(exclude = {"description","employees"})
 @Getter
 @Setter
 @RequiredArgsConstructor //a constructor with only required fields as parameters
