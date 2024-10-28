@@ -15,4 +15,11 @@ public class Company {
     private String email;
     private Address address;
     private ArrayList<Department> departments = new ArrayList();
+
+    public boolean addDepartment(Department department) {
+        return true;
+    }
+     public boolean transferEmployee(long employeeId, int newDeptId) {
+        return  true;
+     }
 }
