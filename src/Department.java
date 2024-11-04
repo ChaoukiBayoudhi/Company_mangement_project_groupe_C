@@ -13,16 +13,16 @@ import java.util.Scanner;
 //@AllArgsConstructor
 //@EqualsAndHashCode //redefine the equals method and the hashCode method
 //compare two departments using all fields
-//@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@EqualsAndHashCode(exclude = "employees")//compare using all fields except employees
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+//@EqualsAndHashCode(exclude = "employees")//compare using all fields except employees
 public class Department {
    // @ToString.Include
-    //@EqualsAndHashCode.Include
     //@NonNull
     private int id;
     private static int lastId=0;
    // @ToString.Include
     @NonNull //the name is required
+    @EqualsAndHashCode.Include
     private String name;
     private String description;
     private ArrayList<Employee> employees=new ArrayList<>();
@@ -51,11 +51,16 @@ public class Department {
     //find Employee by id
     //returns null if not found or the employee if not
     public Employee findEmployee(long id){
-        Employee foundEmp=null;
-        //...
-        return foundEmp;
+        Employee e1=new Employee();
+        e1.setId(id);
+        int index=employees.indexOf(e1);
+        if (index==-1)
+            return null;
+        return employees.get(index);
     }
-     public boolean addEmployee(Employee employee)
+
+
+    public boolean addEmployee(Employee employee)
      {
         Employee foundEmp=findEmployee(employee.getId());
         if(foundEmp!=null)
@@ -64,5 +69,8 @@ public class Department {
         return true;
 
      }
+
+
+
 
 }

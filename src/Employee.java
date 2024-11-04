@@ -17,7 +17,7 @@ public class Employee {
     private JobTitle job;
     private LocalDate hiredate;
     private double salary;
-    private Department department;
+    private Department department=new Department();
 
     public void getEmployee(){
         Scanner sc=new Scanner(System.in);
@@ -34,5 +34,6 @@ public class Employee {
         //get the jobTitle (enum) from the keyboard
         System.out.print("Enter the jobTitle : (analyst,manager, salesman, president, HR, other) : ");
         job =JobTitle.valueOf(sc.next().toUpperCase());
+
     }
 }
