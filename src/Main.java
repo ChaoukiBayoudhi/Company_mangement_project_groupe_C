@@ -1,6 +1,16 @@
 import java.util.ArrayList;
 
 public class Main {
+    public static  int menu(){
+        int choice;
+        System.out.println("Select a choice :");
+        System.out.println("1- get company details");
+        System.out.println("2- Add department");
+        System.out.println("3- Add employee");
+        System.out.println("4- g");
+
+        return choice;
+    }
     public static void main(String[] args) {
        /* Department d1=new Department(1,"HR");//call the required args constructor
         Department d11=new Department(1,"Computer Science");

@@ -70,7 +70,15 @@ public class Department {
 
      }
 
-
+    //remove employee using id
+    public Employee removeEmployee(long id){
+        Employee e1=new Employee();
+        e1.setId(id);
+        int index=employees.indexOf(e1);
+        if (index==-1)
+            return null;
+        return employees.remove(index);
+    }
 
 
 }

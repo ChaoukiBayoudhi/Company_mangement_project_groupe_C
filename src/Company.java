@@ -26,13 +26,26 @@ public class Company {
     }
      public boolean transferEmployee(long employeeId, int newDeptId) {
         //verify if the new department exists or not
-        Department department =findDepartment(newDeptId);
-        if (department == null)
+        Department newDepartment =findDepartment(newDeptId);
+        if (newDepartment == null)
         {
             System.out.println("Could not find department");
             return false;
         }
-
+        //find the employee
+         Department empDepartment = findEmployeeById(employeeId);
+        if (empDepartment == null){
+            System.out.println("Could not find employee");
+            return false;
+        }
+        //get the employee
+         Employee e1=empDepartment.findEmployee(employeeId);
+         //remove the employee from the empDepartment (pld dept)
+         empDepartment.removeEmployee(employeeId);
+        //modify the employee department
+         e1.setDepartment(newDepartment);
+         //add the employee to the newDepartment
+         newDepartment.addEmployee(e1);
         return  true;
      }
      public Department findDepartment(int id)
@@ -46,7 +59,7 @@ public class Company {
          }
          return dept;
      }
-     void getCompany()
+     public void getCompany()
      {
          Scanner sc=new Scanner(System.in);
          System.out.println("name ? ");
@@ -59,7 +72,7 @@ public class Company {
          address.getAddress();;
      }
 
-    public Department findEmployeeByDept(long idEmployee)
+    public Department findEmployeeById(long idEmployee)
     {
         int i=0;
         Department foundDepartment=null;
