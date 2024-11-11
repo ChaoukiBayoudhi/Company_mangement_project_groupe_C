@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static  int menu(){
@@ -7,7 +8,16 @@ public class Main {
         System.out.println("1- get company details");
         System.out.println("2- Add department");
         System.out.println("3- Add employee");
-        System.out.println("4- g");
+        System.out.println("4- Transfer Employee");
+        System.out.println("5- Find Employee");
+        System.out.println("6- Find Department");
+        System.out.println("7- Show Total Salaries");
+        System.out.println("0- Exit");
+        Scanner sc=new Scanner(System.in);
+        do{
+            System.out.print("Enter your choice : ");
+            choice=sc.nextInt();
+        } while(choice<0 || choice>7);
 
         return choice;
     }
@@ -34,5 +44,20 @@ public class Main {
         /*System.out.println(job);
         job=JobTitle.valueOf("Manager".toUpperCase());
         System.out.println(job);*/
+        int choice;
+        do{
+            choice=menu();
+            switch (choice)
+            {
+                case 1:
+                    break;
+                case 2:
+                        break;
+                case 3:
+                        break;
+                case 4:
+                        break;
+            }
+        }while (choice!=0);
     }
 }

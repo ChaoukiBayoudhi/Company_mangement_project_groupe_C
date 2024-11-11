@@ -86,4 +86,22 @@ public class Company {
         }
         return foundDepartment;
     }
+
+    public double totalSalaries_v1(){
+        double totalSal=0;
+        //looping using indexes
+        for(int i=0;i<departments.size();i++)//loop through departments
+            for(int j=0;j<departments.get(i).getEmployees().size();j++)//loop through employees of each department
+                totalSal+=departments.get(i).getEmployees().get(j).getSalary();
+        return totalSal;
+    }
+    public double totalSalaries_v2(){
+        double totalSal=0;
+        //looping using content
+        for(Department dept : departments ){
+            for (Employee emp : dept.getEmployees())
+                totalSal+= emp.getSalary();
+        }
+        return totalSal;
+    }
 }
