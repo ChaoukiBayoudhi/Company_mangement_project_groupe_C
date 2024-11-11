@@ -104,4 +104,22 @@ public class Company {
         }
         return totalSal;
     }
+
+    public boolean addEmployee(Employee employee,int deptId){
+        //find the department
+        Department dept = findDepartment(deptId);
+        if(dept==null)
+            return false;
+        return dept.addEmployee(employee);
+    }
+    public Employee findEmployee(long id){
+        int i=0;
+        Employee foundEmp=null;
+        while(i<departments.size() && foundEmp==null){
+            foundEmp=departments.get(i).findEmployee(id);
+            if (foundEmp==null)
+                i++;
+        }
+        return foundEmp;
+    }
 }

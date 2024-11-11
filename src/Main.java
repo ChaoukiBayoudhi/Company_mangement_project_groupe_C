@@ -45,18 +45,58 @@ public class Main {
         job=JobTitle.valueOf("Manager".toUpperCase());
         System.out.println(job);*/
         int choice;
+        //Create Company instance
+        Company company=new Company();
+        Scanner sc=new Scanner(System.in);
         do{
             choice=menu();
             switch (choice)
             {
                 case 1:
+                    company.getCompany();
                     break;
                 case 2:
-                        break;
+                    Department d1=new Department();
+                    d1.getDepartment();
+                    boolean result=company.addDepartment(d1);
+                    System.out.println((result==true)?"department successfully added.":"The department already exists.");
+                    break;
                 case 3:
-                        break;
+                    Employee emp=new Employee();
+                    emp.getEmployee();
+                    System.out.print("Enter the id of the employee department : ");
+                    int deptId=sc.nextInt();
+                    result=company.addEmployee(emp,deptId);
+                    System.out.println((result==true)?"employee successfully added.":"The employee already exists, or the department is not found.");
+                    break;
                 case 4:
-                        break;
+                    System.out.print("Enter the id of employee : ");
+                    long empId=sc.nextLong();
+                    System.out.print("Enter the id of the new employee department : ");
+                    deptId=sc.nextInt();
+                    result=company.transferEmployee(empId,deptId);
+                    System.out.println((result==true)?"employee was successfully transferred.":"The employee doesn't exist, or the department is not found.");
+                    break;
+                case 5:
+                    System.out.print("Enter the id of employee : ");
+                    empId=sc.nextLong();
+                    Employee e=company.findEmployee(empId);
+                    //System.out.println((e!=null)?e:"The employee doesn't exist.");
+                    //or
+                    if(e!=null)
+                        System.out.println(e);
+                    else
+                        System.out.println("The employee doesn't exist.");
+                    break;
+                case 6:
+                    System.out.print("Enter the id of the department : ");
+                    deptId=sc.nextInt();
+                    Department dept=company.findDepartment(deptId);
+                    System.out.println((dept!=null)? dept : "The department was not found.");
+                    break;
+                case 7:
+                    System.out.println("Total of salaries = "+company.totalSalaries_v2());
+                    break;
             }
         }while (choice!=0);
     }
